@@ -18,8 +18,8 @@ app.post("/send-love", async (req, res) => {
       to: process.env.EMAIL_REC,
       subject: "She Said YES ❤️",
       html: `
-        <h2>—— Reservation Confirmed 💌 ——</h2>
-        <p>A table for 2 has been reserved for us.</p>
+        <h2>—— Reservation Confirmed ——</h2>
+        <p>A table for 2 has been reserved for us. 💌</p>
 
         <p><strong>Date:</strong> 14th February 2026</p>
         <p><strong>Time:</strong> 12:30 PM</p>
