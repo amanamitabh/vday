@@ -16,25 +16,32 @@ const transporter = nodemailer.createTransport({
 });
 
 app.post("/send-love", async (req, res) => {
-  console.log("Route hit");
-
   try {
-    await transporter.sendMail({
-      from: process.env.EMAIL_USER,
+    const mailOptions = {
+      from: `"Aman" <${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_REC,
-      subject: "Test",
-      text: "Testing production email"
-    });
+      subject: "She Said YES ❤️",
+       
+      text: `
+  —— Reservation Confirmed —— 
+A table for 2 has been reserved for us. 💌
 
-    console.log("Email sent");
+Date: 14th February 2026
+Time: 12:30 PM
+Location: Pastel Poetry
+
+No cancellations allowed. 💋
+        `,
+    };
+
+    await transporter.sendMail(mailOptions);
+
     res.json({ success: true });
-
-  } catch (err) {
-    console.error("MAIL ERROR:", err);
+  } catch (error) {
+    console.error(error);
     res.status(500).json({ success: false });
   }
 });
-
 
 const PORT = process.env.PORT || 3000;
 
