@@ -1,56 +1,45 @@
 require("dotenv").config();
 const express = require("express");
-const nodemailer = require("nodemailer");
 const path = require("path");
+const { Resend } = require("resend");
 
 const app = express();
 app.use(express.json());
 app.use(express.static("public"));
 
-const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 587,
-  secure: false, // important
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-  tls: {
-    family: 4 // forces IPv4
-  }
-});
+// Initialize Resend
+const resend = new Resend(process.env.RESEND_API_KEY);
 
+// Send-love route
 app.post("/send-love", async (req, res) => {
   try {
-    const mailOptions = {
-      from: `"Aman" <${process.env.EMAIL_USER}>`,
+    const response = await resend.emails.send({
+      from: process.env.EMAIL_USER, // must be verified in Resend
       to: process.env.EMAIL_REC,
       subject: "She Said YES ❤️",
-       
-      text: `
-  —— Reservation Confirmed —— 
-A table for 2 has been reserved for us. 💌
+      html: `
+        <h2>—— Reservation Confirmed 💌 ——</h2>
+        <p>A table for 2 has been reserved for us.</p>
 
-Date: 14th February 2026
-Time: 12:30 PM
-Location: Pastel Poetry
+        <p><strong>Date:</strong> 14th February 2026</p>
+        <p><strong>Time:</strong> 12:30 PM</p>
+        <p><strong>Location:</strong> Pastel Poetry</p>
 
-No cancellations allowed. 💋
-        `,
-    };
+        <p>No cancellations allowed 💋</p>
+      `,
+    });
 
-    await transporter.sendMail(mailOptions);
-
+    console.log("Resend response:", response);
     res.json({ success: true });
+
   } catch (error) {
-    console.error(error);
+    console.error("Resend error:", error);
     res.status(500).json({ success: false });
   }
 });
 
+// Start server
 const PORT = process.env.PORT || 3000;
-
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
-
