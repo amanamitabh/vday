@@ -8,11 +8,16 @@ app.use(express.json());
 app.use(express.static("public"));
 
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+  host: "smtp.gmail.com",
+  port: 587,
+  secure: false, // important
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
   },
+  tls: {
+    family: 4 // forces IPv4
+  }
 });
 
 app.post("/send-love", async (req, res) => {
