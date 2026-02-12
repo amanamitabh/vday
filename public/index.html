@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  background:#0b0b12;
+  color:white;
+  font-family:'Inter',sans-serif;
+  overflow:hidden;
+}
+
+/* INTRO SCREEN */
+.intro{
+  position:fixed;
+  inset:0;
+  background:radial-gradient(circle at center,#1c1c2b,#0b0b12);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+}
+
+.intro-content{
+  text-align:center;
+}
+
+.intro h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:4rem;
+  margin-bottom:30px;
+}
+
+.intro button{
+  padding:14px 40px;
+  border:none;
+  border-radius:50px;
+  font-size:16px;
+  cursor:pointer;
+  background:linear-gradient(135deg,#ff4e50,#f9d423);
+  color:white;
+  box-shadow:0 15px 40px rgba(255,78,80,0.4);
+  transition:0.4s ease;
+}
+
+.intro button:hover{
+  transform:scale(1.1);
+}
+
+/* WRAPPER */
+.wrapper{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100vh;
+  transition:transform 1.5s ease-in-out;
+}
+
+/* SECTIONS */
+.section{
+  position:relative;
+  height:100vh;
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  overflow:hidden;
+}
+
+.bg{
+  position:absolute;
+  inset:0;
+  background-size:contain;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-color:#0b0b12;
+  animation:zoom 25s ease-in-out infinite alternate;
+  filter: brightness(0.85) contrast(1.1) saturate(1.05);
+}
+
+
+
+@keyframes zoom{
+  from{ transform:scale(1); }
+  to{ transform:scale(1.12); }
+}
+
+.overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to bottom,rgba(0,0,0,0.5),rgba(0,0,0,0.8));
+}
+
+.caption{
+  position:relative;
+  z-index:2;
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.8rem;
+  max-width:900px;
+  padding:0 20px;
+  opacity:0;
+  transform:translateY(40px);
+  transition:1.5s ease;
+}
+
+/* FINAL */
+.final{
+  background: radial-gradient(circle at center,#1c1c2b,#0b0b12 70%);
+  flex-direction:column;
+  gap:20px;
+}
+
+.final h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:3rem;
+}
+
+button{
+  padding:14px 36px;
+  margin:15px;
+  border:none;
+  border-radius:50px;
+  font-size:16px;
+  cursor:pointer;
+  transition:0.4s ease;
+}
+
+.yes{
+  background:linear-gradient(135deg,#ff4e50,#f9d423);
+  color:white;
+  box-shadow:0 15px 40px rgba(255,78,80,0.4);
+}
+
+.yes:hover{
+  transform:scale(1.1);
+}
+
+.no{
+  background:rgba(255,255,255,0.9);
+  color:#ff4e50;
+  position:relative;
+}
+
+.success{
+  display:none;
+  margin-top:20px;
+  font-size:1.3rem;
+  color:#f9d423;
+}
+
+@keyframes float{
+  from{ transform:translateY(100vh); }
+  to{ transform:translateY(-10vh); }
+}
+</style>
+</head>
+
+<body>
+
+<!-- INTRO -->
+<div class="intro" id="introScreen">
+  <div class="intro-content">
+    <h1>For the Love of My Life ❤️</h1>
+    <button onclick="startExperience()">Begin</button>
+  </div>
+</div>
+
+<!-- LOCAL MUSIC -->
+<audio id="bgMusic" src="carelesswhisper.mp3" loop></audio>
+
+<!-- WRAPPER -->
+<div class="wrapper" id="wrapper">
+
+  <section class="section"><div class="bg" style="background-image:url('photo1.jpg')"></div><div class="overlay"></div><div class="caption">From the moment I met you...</div></section>
+  <section class="section"><div class="bg" style="background-image:url('photo2.jpg')"></div><div class="overlay"></div><div class="caption">Something about you felt different.</div></section>
+  <section class="section"><div class="bg" style="background-image:url('photo3.jpg')"></div><div class="overlay"></div><div class="caption">You made ordinary days extraordinary.</div></section>
+  <section class="section"><div class="bg" style="background-image:url('photo4.jpg')"></div><div class="overlay"></div><div class="caption">Your smile became my favorite sight.</div></section>
+  <section class="section"><div class="bg" style="background-image:url('photo5.jpg')"></div><div class="overlay"></div><div class="caption">Your laugh became my favorite sound.</div></section>
+  <section class="section"><div class="bg" style="background-image:url('photo6.jpg')"></div><div class="overlay"></div><div class="caption">And just like that… you became my favorite person.</div></section>
+  <section class="section"><div class="bg" style="background-image:url('photo7.JPEG')"></div><div class="overlay"></div><div class="caption">Every memory with you feels special.</div></section>
+  <section class="section"><div class="bg" style="background-image:url('photo8.jpg')"></div><div class="overlay"></div><div class="caption">Every moment with you feels right.</div></section>
+  <section class="section"><div class="bg" style="background-image:url('photo9.jpg')"></div><div class="overlay"></div><div class="caption">And I can’t imagine my world without you.</div></section>
+  <section class="section"><div class="bg" style="background-image:url('photo10.jpg')"></div><div class="overlay"></div><div class="caption">So there’s something I need to ask you...</div></section>
+
+  <section class="section final">
+    <h1>Will you be my Valentine?</h1>
+    <div>
+      <button class="yes" onclick="sendLove()">Yes</button>
+      <button class="no" onmouseover="moveNo()">No</button>
+    </div>
+    <div class="success" id="successMsg">I think you’ll like what’s waiting in your email. 😏</div>
+  </section>
+
+</div>
+
+<script>
+function startExperience(){
+
+  document.getElementById("introScreen").style.display = "none";
+
+  const music = document.getElementById("bgMusic");
+  music.volume = 0;
+  music.play();
+
+  // Smooth fade-in audio
+  let vol = 0;
+  const fade = setInterval(()=>{
+    if(vol < 0.4){
+      vol += 0.02;
+      music.volume = vol;
+    } else {
+      clearInterval(fade);
+    }
+  }, 200);
+
+  autoScroll();
+}
+
+function autoScroll(){
+  const wrapper = document.getElementById("wrapper");
+  const sections = document.querySelectorAll(".section");
+  let index = 0;
+
+  revealCaption(index);
+
+  const interval = setInterval(()=>{
+    index++;
+
+    if(index < sections.length){
+      wrapper.style.transform = `translateY(-${index * 100}vh)`;
+      revealCaption(index);
+    } else {
+      clearInterval(interval);
+    }
+
+  }, 5000);
+}
+
+function revealCaption(index){
+  const captions = document.querySelectorAll(".caption");
+  if(captions[index]){
+    setTimeout(()=>{
+      captions[index].style.opacity = 1;
+      captions[index].style.transform = "translateY(0)";
+    }, 800);
+  }
+}
+
+async function sendLove(){
+  try{
+    const res = await fetch("/send-love",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"}
+    });
+
+    const data = await res.json();
+    if(data.success){
+      document.getElementById("successMsg").style.display="block";
+    }
+  } catch(e){
+    console.log("Email endpoint not running yet.");
+  }
+}
+
+function moveNo(){
+  const btn=document.querySelector(".no");
+  btn.style.position="absolute";
+  btn.style.left=Math.random()*80+"vw";
+  btn.style.top=Math.random()*80+"vh";
+}
+</script>
+
+</body>
+</html>
